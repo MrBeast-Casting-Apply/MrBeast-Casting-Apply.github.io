@@ -81,7 +81,7 @@
                 if (x > rect.width - 80) { isDragging = false; complete(); }
             };
             thumb.addEventListener('mousedown', onStart); window.addEventListener('mousemove', onMove); window.addEventListener('mouseup', onEnd);
-            thumb.addEventListener('touchstart', onStart); window.addEventListener('touchmove', onMove); window.addEventListener('touchend', onEnd);
+            thumb.addEventListener('touchstart', onStart, {passive: false}); window.addEventListener('touchmove', onMove, {passive: false}); window.addEventListener('touchend', onEnd);
         }
         function complete() {
             document.getElementById('puzzle-box').style.display = 'none'; document.getElementById('loader').style.display = 'block';
@@ -90,3 +90,4 @@
     </script>
 </body>
 </html>
+
