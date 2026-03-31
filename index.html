@@ -10,7 +10,6 @@
         * { box-sizing: border-box; }
         body { 
             font-family: 'Inter', sans-serif; 
-            /* THE BLUE FIX: Changed from black to vibrant MrBeast Blue */
             background: var(--blue); 
             color: #fff; 
             display: flex; 
@@ -24,9 +23,10 @@
         .bg-pattern { 
             position: fixed; 
             top: 0; left: 0; width: 100%; height: 100%; 
-            background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') repeat; 
+            background: url('https://crystalpng.com') repeat; 
             background-size: 60px; 
-            opacity: 0.15; 
+            /* THE 75% FIX: Opacity updated as requested */
+            opacity: 0.75; 
             z-index: 0; 
             animation: float 20s ease-in-out infinite; 
         }
@@ -61,17 +61,16 @@
         input:focus { border-color: var(--blue); box-shadow: 0 0 20px rgba(0,0,0,0.3); }
         .btn { background: linear-gradient(45deg, var(--pink), #ff5e62); color: #fff; border: none; padding: 20px; border-radius: 16px; width: 100%; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 16px; }
         
-        /* TIKTOK CIRCLE ROTATE CAPTCHA */
         #captcha_ui { display: none; padding: 25px 0; }
-        .captcha-container { position: relative; width: 100%; height: 220px; background: #1a1a1a; border-radius: 20px; border: 2px solid rgba(255,255,255,0.08); overflow: hidden; margin-bottom: 20px; }
-        .captcha-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') no-repeat center; background-size: 100%; opacity: 0.1; }
+        .captcha-container { position: relative; width: 100%; height: 220px; background: #1a1a1a; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; margin-bottom: 20px; }
+        .captcha-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://crystalpng.com') no-repeat center; background-size: 100%; opacity: 0.1; }
         .rotate-outer { 
             position: absolute; top: 50%; left: 50%; width: 140px; height: 140px; 
             transform: translate(-50%, -50%); border-radius: 50%; border: 4px solid #333; overflow: hidden; 
         }
         .rotate-inner { 
             width: 100%; height: 100%; 
-            background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') center/contain no-repeat; 
+            background: url('https://crystalpng.com') center/contain no-repeat; 
             transform: rotate(140deg); transition: transform 0.1s; 
         }
         .slider-track { position: absolute; bottom: 15px; left: 40px; right: 40px; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; }
@@ -91,7 +90,7 @@
 </head>
 <body>
     <div class="bg-pattern"></div>
-    <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png " class="top-logo">
+    <img src="https://crystalpng.com" class="top-logo">
     <div class="box">
         <div id="login_section">
             <span class="mr-glow">MR</span><span class="beast-style"> BEAST CASTING</span>
@@ -130,16 +129,15 @@
         }
         function initRotateCaptcha() {
             const handle = document.getElementById('handle'), img = document.getElementById('rotateImg'), track = document.querySelector('.slider-track');
-            let dragging = false, startX = 0, currentPos = 0;
+            let dragging = false, startX = 0;
             const move = (e) => {
                 if (!dragging) return;
                 const clientX = e.touches ? e.touches[0].clientX : e.clientX;
                 let x = clientX - track.getBoundingClientRect().left - 20;
                 if (x < 0) x = 0; if (x > track.offsetWidth - 40) x = track.offsetWidth - 40;
-                currentPos = x; handle.style.left = x + 'px';
+                handle.style.left = x + 'px';
                 let rot = 140 + (x / (track.offsetWidth - 40)) * 220;
                 img.style.transform = `rotate(${rot}deg)`;
-                // Success Catch (360 degrees)
                 if (rot > 355 && rot < 365) { 
                     dragging = false; handle.style.background = "#00ff88"; 
                     setTimeout(showLoader, 1000); 
